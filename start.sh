@@ -1,7 +1,7 @@
 #!/bin/bash
 
 trap '{ echo "Hey, you pressed Ctrl-C.  Time to quit." ; exit 1; }' INT
-tm=600 # 10 minutes in seconds
+tm=15 # 10 minutes in seconds
 
 while true
 do
