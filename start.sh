@@ -14,7 +14,7 @@ captureCam () {
         ffmpeg -t $3 -r 15 -f mjpeg -i $2 ~/capture/$1/$1-$t.avi -r 15
 }
 
-tm=600
+tm=15
 cameras=( {3..5}  8 )
 while $RUNNING
 do
