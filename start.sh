@@ -1,6 +1,8 @@
 #!/bin/bash
+
 trap '{ echo "Hey, you pressed Ctrl-C.  Time to quit." ; exit 1; }' INT
-tm=600
+tm=600 # 10 minutes in seconds
+
 while true
 do
         # sh capture.sh "cam1" "http://traffic1.coronaca.gov/mjpg/video.mjpg?fps=15" $tm & # not working
