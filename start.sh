@@ -13,5 +13,5 @@ do
         # sh capture.sh "cam6" "http://traffic6.coronaca.gov/mjpg/video.mjpg?fps=15" $tm & # not working
         # sh capture.sh "cam7" "http://traffic7.coronaca.gov/mjpg/video.mjpg?fps=15" $tm & # not working
         sh capture.sh "cam8" "http://traffic8.coronaca.gov/mjpg/video.mjpg?fps=15" $tm &
-        sleep 10m
+        sleep $tm
 done
