@@ -1,17 +1,26 @@
 #!/bin/bash
+trap funcTerminate INT
+RUNNING=true
+funcTerminate() {
+  RUNNING=false
+  echo "Exit program"
+  exit 2
+}
 
-trap '{ echo "Hey, you pressed Ctrl-C.  Time to quit." ; exit 1; }' INT
-tm=15 # 10 minutes in seconds
+mkdir -p ~/capture
+captureCam () {
+        mkdir -p ~/capture/$1
+        t=`date +%s`
+        ffmpeg -t $3 -r 15 -f mjpeg -i $2 ~/capture/$1/$1-$t.avi -r 15
+}
 
-while true
+tm=600
+cameras=( {3..5}  8 )
+while $RUNNING
 do
-        # sh capture.sh "cam1" "http://traffic1.coronaca.gov/mjpg/video.mjpg?fps=15" $tm & # not working
-        # sh capture.sh "cam2" "http://traffic2.coronaca.gov/mjpg/video.mjpg?fps=15" $tm & # not working
-        sh capture.sh "cam3" "http://traffic3.coronaca.gov/mjpg/video.mjpg?fps=15" $tm &
-        sh capture.sh "cam4" "http://traffic4.coronaca.gov/mjpg/video.mjpg?fps=15" $tm & 
-        sh capture.sh "cam5" "http://traffic5.coronaca.gov/mjpg/video.mjpg?fps=15" $tm &
-        # sh capture.sh "cam6" "http://traffic6.coronaca.gov/mjpg/video.mjpg?fps=15" $tm & # not working
-        # sh capture.sh "cam7" "http://traffic7.coronaca.gov/mjpg/video.mjpg?fps=15" $tm & # not working
-        sh capture.sh "cam8" "http://traffic8.coronaca.gov/mjpg/video.mjpg?fps=15" $tm &
+        for i in "${cameras[@]}"
+        do
+            captureCam "cam$i" "http://traffic$i.coronaca.gov/mjpg/video.mjpg?fps=15" $tm
+        done
         sleep $tm
 done
