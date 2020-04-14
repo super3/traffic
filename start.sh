@@ -15,12 +15,12 @@ captureCam () {
 }
 
 tm=15
-cameras=( {3..5}  8 )
+cameras=( {3..5}  8 ) # only these cameras are working
 while $RUNNING
 do
         for i in "${cameras[@]}"
         do
-            captureCam "cam$i" "http://traffic$i.coronaca.gov/mjpg/video.mjpg?fps=15" $tm
+            captureCam "cam$i" "http://traffic$i.coronaca.gov/mjpg/video.mjpg?fps=15" $tm &
         done
         sleep $tm
 done
