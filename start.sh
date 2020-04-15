@@ -14,7 +14,7 @@ captureCam () {
         ffmpeg -t $3 -r 15 -f mjpeg -i $2 /traffic/capture/$1/$1-$t.avi -r 15
 }
 
-tm=15
+tm=600
 cameras=( {3..5}  8 ) # only these cameras are working
 while $RUNNING
 do
