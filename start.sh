@@ -7,11 +7,11 @@ funcTerminate() {
   exit 2
 }
 
-mkdir -p ~/capture
+mkdir -p /traffic/capture
 captureCam () {
-        mkdir -p ~/capture/$1
+        mkdir -p ~/traffic/capture/$1
         t=`date +%s`
-        ffmpeg -t $3 -r 15 -f mjpeg -i $2 ~/capture/$1/$1-$t.avi -r 15
+        ffmpeg -t $3 -r 15 -f mjpeg -i $2 /traffic/capture/$1/$1-$t.avi -r 15
 }
 
 tm=15
