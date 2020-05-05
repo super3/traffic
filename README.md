@@ -3,7 +3,7 @@ Capture traffic cameras from [Corona Traffic Cam Viewer](https://coronacatraffic
 
 # running
 ```
-apt-get install ffmpeg
+apt-get install ffmpeg git -y
 git clone https://github.com/super3/traffic
 cd traffic
 chmod +x traffic.sh
